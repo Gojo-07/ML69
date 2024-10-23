@@ -1,0 +1,58 @@
+INDEX.JS
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+// Find the root element in the HTML and render the App component
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+INDEX.HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React App</title>
+</head>
+<body>
+  <div id="root"></div>
+  <!-- The script is usually bundled with tools like Webpack or Vite -->
+  <script src="/static/js/bundle.js"></script>
+</body>
+</html>
+APP.JS
+import React, { useState } from "react";
+
+function App() {
+  const [value, setValue] = useState("");
+  const [clickedValue, setClickedValue] = useState("");
+
+  function handleChange(e) {
+    setValue(e.target.value);
+  }
+
+  function handleClick() {
+    setClickedValue(value);
+  }
+
+  return (
+    <div style={{ textAlign: "center", margin: "auto" }}>
+      <h1 style={{ color: "Green" }}>Event Handlers in React</h1>
+      <h3>Example for React onChange and onClick Event Handlers</h3>
+      <input value={value} onChange={handleChange} />
+      <br />
+      <button onClick={handleClick} style={{ marginTop: "10px" }}>
+        Display Input
+      </button>
+      <br />
+      <div>User Input (onChange):- {value}</div>
+      <div>User Input (onClick):- {clickedValue}</div>
+    </div>
+  );
+}
+
+export default App;
